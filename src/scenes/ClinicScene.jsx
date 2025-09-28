@@ -76,7 +76,19 @@ function getSpriteScale(p) {
   return 3.2;
 }
 
-const Abs = ({ x, y, w, h, style = {}, children, toPxX, toPxY, title }) => (
+const Abs = ({
+  x,
+  y,
+  w,
+  h,
+  style = {},
+  children,
+  toPxX,
+  toPxY,
+  title,
+  offsetX = 0,
+  offsetY = 0,
+}) => (
   <div
     title={title}
     style={{
@@ -1342,6 +1354,8 @@ export default function ClinicScene({
         y={PCPos.y}
         toPxX={toPxX}
         toPxY={toPxY}
+        offsetX={offsetX}
+        offsetY={offsetY}
         style={{ zIndex: 10 }}
       >
         <div
