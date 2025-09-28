@@ -84,7 +84,6 @@ const Home = () => {
       window.close();
       return;
     }
-    window.location.href = "https://www.bing.com/";
   };
 
   // Fade saat Start
@@ -585,7 +584,7 @@ const Home = () => {
             </div>
           </div>
         )}
-        
+
         {isMobile && (
           <div
             style={{
@@ -607,64 +606,59 @@ const Home = () => {
                 color: "#111",
                 borderRadius: 16,
                 padding: 20,
-                width: 420,
+                width: 480,
                 maxWidth: "90%",
                 boxShadow: "0 12px 40px rgba(0,0,0,0.25)",
                 position: "relative",
                 border: "1px solid #e9eef3",
                 animation: "popIn 220ms cubic-bezier(.2,.7,.2,1) forwards",
+                textAlign: "center",
               }}
             >
-              <div
+              {/* Logo di atas */}
+              <img
+                src={logo}
+                alt="Vetropolis"
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  marginBottom: 10,
-                  paddingBottom: 8,
-                  borderBottom: "1px solid #eef2f7",
+                  width: 180,
+                  margin: "0 auto 14px auto",
+                  display: "block",
+                  userSelect: "none",
+                }}
+              />
+
+              <h3 style={{ margin: "0 0 12px 0", fontWeight: 800 }}>
+                ⚠️ Perhatian
+              </h3>
+
+              <p
+                style={{
+                  margin: "0 0 14px 0",
+                  lineHeight: "22px",
+                  fontSize: 14,
                 }}
               >
-                <h3 style={{ margin: 0, fontWeight: 800, letterSpacing: 0.5 }}>
-                  Perhatian
-                </h3>
-                <button
-                  onClick={() => setIsMobile(false)}
-                  aria-label="Tutup"
-                  title="Tutup"
-                  style={{
-                    width: 32,
-                    height: 32,
-                    background: "#fff",
-                    cursor: "pointer",
-                    fontSize: 18,
-                    border: "none",
-                  }}
-                >
-                  ❌
-                </button>
-              </div>
-
-              <p style={{ margin: 0, lineHeight: "20px" }}>
-                Game ini optimal dimainkan di <b>PC/Laptop</b> dengan keyboard:
+                Game ini optimal dimainkan di <b>PC/Laptop</b> dengan keyboard.
                 <br />
-                WASD/Arrow untuk bergerak, <b>E</b> untuk interaksi,{" "}
-                <b>Spasi</b> untuk aksi tertentu.
+                Gunakan <b>WASD/Arrow</b> untuk bergerak, <b>E</b> untuk
+                interaksi, dan <b>Spasi</b> untuk aksi.
               </p>
 
               <button
-                onClick={() => setIsMobile(false)}
+                onClick={exit}
                 style={{
-                  marginTop: 14,
-                  padding: "8px 14px",
+                  marginTop: 10,
+                  padding: "10px 20px",
                   borderRadius: 10,
                   border: "2px solid #222",
-                  background: "#eee",
-                  cursor: "pointer",
+                  background: "#2196f3",
+                  color: "#000000ff",
                   fontWeight: 800,
+                  cursor: "pointer",
+                  fontSize: 14,
                 }}
               >
-                OK, mengerti
+                OK, Mengerti
               </button>
             </div>
           </div>
