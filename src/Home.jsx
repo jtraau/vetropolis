@@ -613,6 +613,7 @@ const Home = () => {
                 border: "1px solid #e9eef3",
                 animation: "popIn 220ms cubic-bezier(.2,.7,.2,1) forwards",
                 textAlign: "center",
+                fontFamily: '"Press Start 2P","VT323",monospace',
               }}
             >
               {/* Logo di atas */}
