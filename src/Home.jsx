@@ -585,7 +585,7 @@ const Home = () => {
             </div>
           </div>
         )}
-        /* POPUP: Mobile warning */
+        
         {isMobile && (
           <div
             style={{
@@ -669,7 +669,7 @@ const Home = () => {
             </div>
           </div>
         )}
-        
+
         {/* ===== Panel kanan (card + logo + tombol) — DIPINDAH LEBIH KANAN ===== */}
         <div
           style={{
