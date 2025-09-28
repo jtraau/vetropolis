@@ -16,6 +16,8 @@ const Home = () => {
   const [lastVolume, setLastVolume] = useState(100);
 
   // ui
+  const [isMobile, setIsMobile] = useState(false);
+
   const [showSettings, setShowSettings] = useState(false);
   const [settingsTab, setSettingsTab] = useState("audio"); // "audio" | "tutorial"
   const [isStarted, setIsStarted] = useState(false);
@@ -25,7 +27,13 @@ const Home = () => {
   const [showCutscene, setShowCutscene] = useState(false);
 
   const audioRef = useRef(null);
-  4;
+
+  useEffect(() => {
+    const checkMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(
+      navigator.userAgent
+    );
+    setIsMobile(checkMobile);
+  }, []);
 
   useEffect(() => {
     const a = audioRef.current;
@@ -339,7 +347,6 @@ const Home = () => {
           aspectRatio: "16 / 9",
           borderRadius: 24,
           boxShadow: "0 4px 24px rgba(0,0,0,0.10)",
-          // ⬇️ biar panel kanan bisa “keluar” lebih kanan tanpa kepotong
           overflow: "visible",
           display: "flex",
           alignItems: "center",
@@ -578,7 +585,91 @@ const Home = () => {
             </div>
           </div>
         )}
+        /* POPUP: Mobile warning */
+        {isMobile && (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 12,
+              pointerEvents: "none",
+            }}
+          >
+            <div
+              role="dialog"
+              aria-modal
+              style={{
+                pointerEvents: "auto",
+                background: "#ffffff",
+                color: "#111",
+                borderRadius: 16,
+                padding: 20,
+                width: 420,
+                maxWidth: "90%",
+                boxShadow: "0 12px 40px rgba(0,0,0,0.25)",
+                position: "relative",
+                border: "1px solid #e9eef3",
+                animation: "popIn 220ms cubic-bezier(.2,.7,.2,1) forwards",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: 10,
+                  paddingBottom: 8,
+                  borderBottom: "1px solid #eef2f7",
+                }}
+              >
+                <h3 style={{ margin: 0, fontWeight: 800, letterSpacing: 0.5 }}>
+                  Perhatian
+                </h3>
+                <button
+                  onClick={() => setIsMobile(false)}
+                  aria-label="Tutup"
+                  title="Tutup"
+                  style={{
+                    width: 32,
+                    height: 32,
+                    background: "#fff",
+                    cursor: "pointer",
+                    fontSize: 18,
+                    border: "none",
+                  }}
+                >
+                  ❌
+                </button>
+              </div>
 
+              <p style={{ margin: 0, lineHeight: "20px" }}>
+                Game ini optimal dimainkan di <b>PC/Laptop</b> dengan keyboard:
+                <br />
+                WASD/Arrow untuk bergerak, <b>E</b> untuk interaksi,{" "}
+                <b>Spasi</b> untuk aksi tertentu.
+              </p>
+
+              <button
+                onClick={() => setIsMobile(false)}
+                style={{
+                  marginTop: 14,
+                  padding: "8px 14px",
+                  borderRadius: 10,
+                  border: "2px solid #222",
+                  background: "#eee",
+                  cursor: "pointer",
+                  fontWeight: 800,
+                }}
+              >
+                OK, mengerti
+              </button>
+            </div>
+          </div>
+        )}
+        
         {/* ===== Panel kanan (card + logo + tombol) — DIPINDAH LEBIH KANAN ===== */}
         <div
           style={{
