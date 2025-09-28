@@ -95,7 +95,7 @@ export default function Gameplay({ soundOn, volume = 1, onExit }) {
   const [lastSleepAt, setLastSleepAt] = useState(0);
 
   // Status di bar
-  const [money, setMoney] = useState(9999);
+  const [money, setMoney] = useState(250);
   const [health, setHealth] = useState(100);
   const [hunger, setHunger] = useState(100);
   const [thirst, setThirst] = useState(100);
