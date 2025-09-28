@@ -22,14 +22,11 @@ import {
 import clinicImg from "../assets/maps/pet-clinic.png";
 import clinicPc from "../assets/components/pc-donation.png";
 
-// ==== Auto-build sprite atlas per-folder pasien ====
-// Struktur: /assets/patient/<ID>/(down|up|left|right)_(0|1).png
 const SPRITE_ATLAS = buildSpriteAtlas();
 const AVAILABLE_SPRITE_IDS = Object.keys(SPRITE_ATLAS)
   .map(Number)
   .sort((a, b) => a - b);
 
-// (opsional) kunci sprite per-nama pasien
 const PREFERRED_SPRITE_BY_NAME = {
   Rara: 1,
   Ciko: 2,
@@ -37,7 +34,6 @@ const PREFERRED_SPRITE_BY_NAME = {
   Moka: 4,
 };
 
-// (opsional) scale per set (kalau tiap set beda ukuran)
 const SPRITE_SCALE_BY_ID = {
   1: 3,
   2: 2.6,
@@ -93,7 +89,9 @@ const Abs = ({
     title={title}
     style={{
       position: "absolute",
-      transform: `translate3d(${toPxX(x)}px, ${toPxY(y)}px, 0)`,
+      transform: `translate3d(${offsetX + toPxX(x)}px, ${
+        offsetY + toPxY(y)
+      }px, 0)`,
       width: w ?? undefined,
       height: h ?? undefined,
       willChange: "transform",
@@ -526,7 +524,7 @@ export default function ClinicScene({
   stamina,
   onAfterServePatient,
 }) {
-  const [PCPos, setPCPos] = useState({ x: 20, y: 6.7 });
+  const [PCPos, setPCPos] = useState({ x: 11.1, y: 6.7 });
   const [showTips, setShowTips] = useState(false);
   const [{ activeId, patients }, setSnap] = useState(getSnapshot());
 
