@@ -77,12 +77,12 @@ const Home = () => {
   };
 
   const exit = () => {
-    if (
-      window.opener ||
-      window.matchMedia?.("(display-mode: standalone)").matches
-    ) {
+    try {
       window.close();
-      return;
+      window.open("", "_self")?.close();
+      window.open("about:blank", "_self")?.close();
+    } catch (e) {
+      console.log("Close blocked:", e);
     }
   };
 
