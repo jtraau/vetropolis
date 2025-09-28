@@ -19,7 +19,8 @@ import outsideBgm from "../assets/sfx/outside-bgm.mp3";
 
 const CITIZEN_SPRITES = import.meta.glob("../assets/citizen/*.png", {
   eager: true,
-  as: "url",
+  query: "url",
+  import: "default",
 });
 
 const getCitizenSprite = (key) => {
